@@ -34,91 +34,18 @@
         </div>
 
         <div class="row">
-
+@foreach($data as $key=>$value)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-60">
-              <a href="#"><img class="card-img-top" src="{{url('Agency/img/wisata/wisata1.jpg')}}" alt=""></a>
+              <img class="card-img-top" src="{{url('uploads/'.$value->foto)}}" alt="">
               <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item One</a>
+                <h4 class="card-title" style="text-align: center;">
+                  <a>{{$value->judul}}</a>
                 </h4>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">★ ★ ★ ★ ☆</small>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-60">
-              <a href="#"><img class="card-img-top" src="{{url('Agency/img/wisata/wisata10.jpg')}}" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Two</a>
-                </h4>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">★ ★ ★ ★ ☆</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-60">
-              <a href="#"><img class="card-img-top" src="{{url('Agency/img/wisata/pantai2.jpeg')}}" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Three</a>
-                </h4>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">★ ★ ★ ★ ☆</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-60">
-              <a href="#"><img class="card-img-top" src="{{url('Agency/img/wisata/wisata4.jpg')}}" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Four</a>
-                </h4>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">★ ★ ★ ★ ☆</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-60">
-              <a href="#"><img class="card-img-top" src="{{url('Agency/img/wisata/wisata5.jpg')}}" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Five</a>
-                </h4>
-            </div>
-              <div class="card-footer">
-                <small class="text-muted">★ ★ ★ ★ ☆</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-60">
-              <a href="#"><img class="card-img-top" src="{{url('Agency/img/wisata/wisata9.jpg')}}" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Six</a>
-                </h4>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">★ ★ ★ ★ ☆</small>
-              </div>
-            </div>
-          </div>
-
+@endforeach
         </div>
         <!-- /.row -->
 

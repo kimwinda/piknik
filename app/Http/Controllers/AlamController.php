@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Artikel;
 
 class AlamController extends Controller
 {
@@ -13,7 +15,8 @@ class AlamController extends Controller
      */
     public function index()
     {
-        return view('alam.index');
+        $artikel = Artikel::where('id_kategori','=',2)->get();
+        return view('alam.index',['data' => $artikel]);
     }
 
     /**

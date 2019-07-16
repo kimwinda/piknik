@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Artikel;
 
 class MuseumController extends Controller
 {
@@ -13,7 +15,8 @@ class MuseumController extends Controller
      */
     public function index()
     {
-        return view('museum.index');
+        $artikel = Artikel::where('id_kategori','=',3)->get();
+        return view('museum.index',['data' => $artikel]);
     }
 
     /**

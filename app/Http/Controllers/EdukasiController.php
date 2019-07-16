@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Artikel;
 
 class EdukasiController extends Controller
 {
@@ -13,7 +15,8 @@ class EdukasiController extends Controller
      */
     public function index()
     {
-        return view('edukasi.index');
+        $artikel = Artikel::where('id_kategori','=',5)->get();
+        return view('edukasi.index',['data' => $artikel]);
     }
 
     /**

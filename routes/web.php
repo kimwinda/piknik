@@ -15,6 +15,8 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();{
 
 
@@ -38,6 +40,9 @@ Route::get('/admin', function () {
 });
 
 
+
+Route::group(['middleware' => [ 'auth', 'role:editor']],function(){
+
 Route::get('/kategori','Admin\KategoriController@index');
 Route::get('kategori-add','Admin\KategoriController@create')->name('kategori-add');
 Route::post('kategori-store','Admin\KategoriController@store')->name('kategori-store');
@@ -54,6 +59,10 @@ Route::post('artikel-update','Admin\ArtikelController@update')->name('artikel-up
 Route::get('artikel-delete/{id}', 'Admin\ArtikelController@destroy');
 Route::post('artikel-search/','Admin\ArtikelController@search')->name('artikel-search');
 
+});
+
+Route::group(['middleware' => [ 'auth', 'role:admin']],function(){
+
 Route::get('/gallery','Admin\GalleryController@index');
 Route::get('gallery-add', 'Admin\GalleryController@create')->name('gallery-add');
 Route::post('gallery-store','Admin\GalleryController@store')->name('gallery-store');
@@ -61,6 +70,18 @@ Route::get('gallery-edit/{id}', 'Admin\GalleryController@edit');
 Route::post('gallery-update','Admin\GalleryController@update')->name('gallery-update');
 Route::get('gallery-delete/{id}', 'Admin\GalleryController@destroy');
 Route::post('gallery-search/','Admin\GalleryController@search')->name('gallery-search');
+
+Route::get('/user','Admin\UserController@index');
+Route::get('user-add', 'Admin\UserController@create')->name('user-add');
+Route::post('user-store','Admin\UserController@store')->name('user-store');
+Route::get('user-edit/{id}', 'Admin\UserController@edit');
+Route::post('user-update','Admin\UserController@update')->name('user-update');
+Route::get('user-delete/{id}', 'Admin\UserController@destroy');
+Route::post('user-search/','Admin\UserController@search')->name('user-search'); 
+
+});
+
+Route::group(['middleware' => [ 'auth', 'role:users']],function(){
 
 Route::get('/event','Admin\EventController@index');
 Route::get('event-add', 'Admin\EventController@create')->name('event-add');
@@ -70,12 +91,9 @@ Route::post('event-update','Admin\EventController@update')->name('event-update')
 Route::get('event-delete/{id}', 'Admin\EventController@destroy');
 Route::post('event-search/','Admin\EventController@search')->name('event-search');
 
-Route::get('/user','Admin\UserController@index');
-Route::get('user-add', 'Admin\UserController@create')->name('user-add');
-Route::post('user-store','Admin\UserController@store')->name('user-store');
-Route::get('user-edit/{id}', 'Admin\UserController@edit');
-Route::post('user-update','Admin\UserController@update')->name('user-update');
-Route::get('user-delete/{id}', 'Admin\UserController@destroy');
-Route::post('user-search/','Admin\UserController@search')->name('user-search');
+});
 
 }
+
+Route::get ('/redirect/{provider}', 'SocialAuthController@redirect' );
+Route::get ('/callback/{provider}', 'SocialAuthController@callback' );

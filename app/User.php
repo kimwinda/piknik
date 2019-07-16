@@ -38,4 +38,27 @@ class User extends Authenticatable
     ];
 
     protected $primaryKey = 'id_users';
+
+    public function roles()
+    {
+        Return $this->belongsToMany(Role::Class, '_role_admin', 'id_users', 'id_roles');
+    }
+
+    public function putRole($role)
+    {
+        if (is_string($role))
+        {
+            $role = Role::whereRoleName($role)->first();
+        }
+        return $this->roles()->Attach($role);
+    }
+
+    public function hasRole($roleName)
+    {
+        foreach ($this->roles As $role)
+        {
+            if ($role->role === $roleName) return true;
+        }
+        return false;
+    }
 }

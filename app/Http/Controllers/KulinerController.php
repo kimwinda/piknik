@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Artikel;
 
 class KulinerController extends Controller
 {
@@ -13,7 +15,8 @@ class KulinerController extends Controller
      */
     public function index()
     {
-        return view('kuliner.index');
+        $artikel = Artikel::where('id_kategori','=',1)->get();
+        return view('kuliner.index',['data' => $artikel]);
     }
 
     /**

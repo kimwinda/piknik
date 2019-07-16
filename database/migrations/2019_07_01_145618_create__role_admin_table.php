@@ -16,7 +16,7 @@ class CreateRoleAdminTable extends Migration
         Schema::create('_role_admin', function (Blueprint $table) {
             $table->bigIncrements('id_role_admin');
             $table->unsignedBigInteger('id_roles');
-            $table->unsignedBigInteger('id_admin');
+            $table->unsignedBigInteger('id_users');
             $table->timestamps();
 
             $table
@@ -24,9 +24,9 @@ class CreateRoleAdminTable extends Migration
             ->references('id_roles')
             ->on('roles');
             $table
-            ->foreign('id_admin')
-            ->references('id_admin')
-            ->on('admin');
+            ->foreign('id_users')
+            ->references('id_users')
+            ->on('users');
         });
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Artikel;
 
 class DesaController extends Controller
 {
@@ -13,7 +15,8 @@ class DesaController extends Controller
      */
     public function index()
     {
-        return view('desa.index');
+        $artikel = Artikel::where('id_kategori','=',6)->get();
+        return view('desa.index',['data' => $artikel]);
     }
 
     /**

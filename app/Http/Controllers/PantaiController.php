@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Artikel;
 
 class PantaiController extends Controller
 {
@@ -13,7 +15,8 @@ class PantaiController extends Controller
      */
     public function index()
     {
-        return view('pantai.index');
+        $artikel = Artikel::where('id_kategori','=',4)->get();
+        return view('pantai.index',['data' => $artikel]);
     }
 
     /**
